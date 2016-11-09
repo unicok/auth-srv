@@ -9,6 +9,7 @@ install:
 script:
     - go vet -x
     - go vet -x github.com/unicok/auth
+    - go get ./...
     - go install
     - go install github.com/unicok/auth
     - go test -race -coverprofile=coverage.txt -covermode=atomic -v github.com/unicok/auth
