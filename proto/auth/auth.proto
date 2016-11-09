@@ -3,7 +3,7 @@ syntax = "proto3";
 package auth;
 
 // auth service 
-service AuthService {
+service Auth {
     rpc Register(RegisterRequest) returns (Result); //用户注册
     rpc Auth(Certificate) returns (Result); // 验证凭证
 }

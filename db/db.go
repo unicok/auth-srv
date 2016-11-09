@@ -9,7 +9,7 @@ import (
 
 	"strings"
 
-	"github.com/unicok/auth/proto/auth"
+	"github.com/unicok/auth-srv/proto/auth"
 	db "github.com/unicok/misc/db/mongodb"
 	"github.com/unicok/misc/log"
 )

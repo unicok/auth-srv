@@ -6,15 +6,15 @@ import (
 	"regexp"
 	"unsafe"
 
-	mgo "gopkg.in/mgo.v2"
-
 	"github.com/micro/go-micro/client"
 	"github.com/micro/go-micro/metadata"
-	"github.com/unicok/auth/db"
-	proto "github.com/unicok/auth/proto/auth"
-	"github.com/unicok/misc/log"
-	"github.com/unicok/snowflake/proto/snowflake"
 	"golang.org/x/net/context"
+	mgo "gopkg.in/mgo.v2"
+
+	"github.com/unicok/auth-srv/db"
+	proto "github.com/unicok/auth-srv/proto/auth"
+	"github.com/unicok/misc/log"
+	"github.com/unicok/snowflake-srv/proto/snowflake"
 )
 
 var (
@@ -29,7 +29,7 @@ var (
 )
 
 var (
-	sfCli snowflake.SnowflakeServiceClient
+	sfCli snowflake.SnowflakeClient
 )
 
 type Auth struct{}
@@ -74,15 +74,15 @@ func (s *Auth) Auth(ctx context.Context, req *proto.Certificate, rsp *proto.Resu
 
 func GetNextID(key string) (uint64, error) {
 	req := client.NewRequest(
-		"com.unicok.srv.snowflake", "SnowflakeService.Next",
-		&snowflake.Snowflake_Key{
+		"com.unicok.srv.snowflake", "Snowflake.Next",
+		&snowflake.Key{
 			Name: "userid",
 		})
 
 	// create context with metadata
 	ctx := metadata.NewContext(context.Background(), nil)
 
-	rsp := &snowflake.Snowflake_Value{}
+	rsp := &snowflake.Value{}
 	if err := client.Call(ctx, req, rsp); err != nil {
 		return 0, err
 	}

@@ -2,19 +2,22 @@ package main
 
 import (
 	"log"
+	"time"
 
 	"github.com/micro/cli"
 	"github.com/micro/go-micro"
-	"github.com/unicok/auth/db"
-	proto "github.com/unicok/auth/proto/auth"
 
-	"github.com/unicok/auth/handler"
+	"github.com/unicok/auth-srv/db"
+	"github.com/unicok/auth-srv/handler"
+	proto "github.com/unicok/auth-srv/proto/auth"
 )
 
 func main() {
 	service := micro.NewService(
 		micro.Name("com.unicok.srv.auth"),
 		micro.Version("latest"),
+		micro.RegisterTTL(time.Minute),
+		micro.RegisterInterval(time.Second*30),
 
 		micro.Flags(
 			cli.StringFlag{
@@ -36,7 +39,7 @@ func main() {
 	service.Init()
 	db.Init()
 
-	proto.RegisterAuthServiceHandler(service.Server(), new(handler.Auth))
+	proto.RegisterAuthHandler(service.Server(), new(handler.Auth))
 
 	if err := service.Run(); err != nil {
 		log.Fatal(err)
