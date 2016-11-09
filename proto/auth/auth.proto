@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package auth;
+
+// auth service 
+service AuthService {
+    rpc Register(RegisterRequest) returns (Result); //用户注册
+    rpc Auth(Certificate) returns (Result); // 验证凭证
+}
+
+enum CertificateType {
+    UUID = 0;
+    PLAIN = 1;
+    TOKEN = 2;
+    FACEBOOK = 3;
+}
+
+message User {
+    uint64 UserId = 1;          
+	string UserName = 2;        
+	string Password = 3;      
+	string DeviceName = 4;      
+	string DeviceId = 5;    
+	int32 DeviceType = 6;      
+	string OpenUUID = 7;     
+	string Lang = 8;      
+	string LoginIP = 9;          
+	int64 Created = 10;
+	int64 Updated = 11;
+}
+
+message RegisterRequest {
+    User user = 1;
+}
+
+message RegisterResponse {
+}
+
+message Certificate {
+    CertificateType Type = 1;
+    bytes Proof = 2;
+}
+
+message Result {
+    bool OK = 1;
+    uint64 UserId = 2;
+    bytes Body = 3;
+}

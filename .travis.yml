@@ -1,0 +1,17 @@
+language: go
+
+go:
+  - 1.7
+
+install:
+    - go get github.com/mattn/goveralls
+
+script:
+    - go vet -x
+    - go vet -x github.com/unicok/auth
+    - go install
+    - go install github.com/unicok/auth
+    - go test -race -coverprofile=coverage.txt -covermode=atomic -v github.com/unicok/auth
+
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
