@@ -1,5 +1,5 @@
 # auth
-[![Build Status](https://travis-ci.org/gonet2/auth.svg?branch=master)](https://travis-ci.org/gonet2/auth)
+[![Build Status](https://travis-ci.org/unicok/auth.svg?branch=master)](https://travis-ci.org/unicok/auth)
 
 ## Getting started
 
