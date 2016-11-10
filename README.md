@@ -1,5 +1,5 @@
 # auth
-[![Build Status](https://travis-ci.org/unicok/auth.svg?branch=master)](https://travis-ci.org/unicok/auth)
+[![Build Status](https://travis-ci.org/unicok/auth-srv.svg?branch=master)](https://travis-ci.org/unicok/auth-srv)
 
 ## Getting started
 
@@ -16,8 +16,8 @@
 4. Download and start the service
 
 	```shell
-	go get github.com/unicok/auth
-	./auth --mongodb_url="mongodb://127.0.0.1:27017/account"
+	go get github.com/unicok/auth-srv
+	./auth-srv --mongodb_url="mongodb://127.0.0.1:27017/account"
 	```
 
 

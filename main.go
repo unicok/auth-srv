@@ -1,7 +1,6 @@
 package main
 
 import (
-	"log"
 	"time"
 
 	"github.com/micro/cli"
@@ -10,6 +9,7 @@ import (
 	"github.com/unicok/auth-srv/db"
 	"github.com/unicok/auth-srv/handler"
 	proto "github.com/unicok/auth-srv/proto/auth"
+	"github.com/unicok/misc/log"
 )
 
 func main() {
