@@ -10,7 +10,6 @@ script:
     - go vet -x
     - go vet -x github.com/unicok/auth-srv
     - go get ./...
-    - go install
     - go install github.com/unicok/auth-srv
     - go test -race -coverprofile=coverage.txt -covermode=atomic -v github.com/unicok/auth-srv
 
