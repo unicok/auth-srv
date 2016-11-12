@@ -23,7 +23,8 @@ func main() {
 			cli.StringFlag{
 				Name:   "mongodb_url",
 				EnvVar: "MONGODB_URL",
-				Usage:  "The mongodb URL e.g mongodb://username:password@127.0.0.1:27017/db",
+				Usage:  "The mongodb URL.",
+				Value:  "mongodb://username:password@127.0.0.1:27017/account",
 			},
 		),
 
@@ -38,7 +39,7 @@ func main() {
 
 	service.Init()
 	db.Init()
-
+	log.Info("test")
 	proto.RegisterAuthHandler(service.Server(), new(handler.Auth))
 
 	if err := service.Run(); err != nil {
